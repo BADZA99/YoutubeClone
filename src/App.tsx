@@ -1,11 +1,16 @@
 import React from 'react';
+import { AppContainer, GlobalStyle } from './App.Styled';
+import { ThemeProvider } from 'styled-components';
+import { THEMES } from './utils/theme';
 
 
 function App() {
+  const CurrentTheme="dark";
   return (
-    <div className="App">
-     hello react ts
-    </div>
+    <ThemeProvider theme={THEMES[CurrentTheme]}>
+      <GlobalStyle />
+      <AppContainer>hello react ts</AppContainer>
+    </ThemeProvider>
   );
 }
 
