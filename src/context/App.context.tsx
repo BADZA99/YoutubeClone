@@ -1,9 +1,15 @@
 // Importation des hooks et types nécessaires de React
 import { ReactNode, createContext, useContext, useState } from "react";
+import { LANGUAGE } from "../utils/translation";
 
 // Définition de l'interface pour la valeur du contexte de l'application
 interface IAppContextValue {
   theme: "light" | "dark"; // Le thème peut être soit "light" soit "dark"
+  language: "french" | "english";
+  ToggleLanguage: ()=>void;
+  ToggleTheme: ()=>void;
+  text: typeof LANGUAGE["english"];
+  
 }
 
 // Création du contexte de l'application avec une valeur par défaut de null
@@ -25,10 +31,25 @@ interface IAppContextProviderProps {
 
 // Composant fournisseur de contexte de l'application
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light"); // État local pour le thème
+  const [theme, setTheme] = useState<"light" | "dark">("dark"); 
+  const [language, setlanguage] = useState<"french" | "english">("english"); 
+
+  const ToggleLanguage = ()=>{
+    setlanguage((CurrentLanguage)=>CurrentLanguage==="english"?"french":"english");
+  }
+
+  const ToggleTheme =()=>{
+    setTheme((CurrentTheme)=>CurrentTheme==="light"?"dark":"light");
+  }
+
+
+
   const value = {
-    // Valeur qui sera passée au contexte
     theme,
+    language,
+    ToggleLanguage,
+    ToggleTheme,
+    text:LANGUAGE[language],
   };
   // Le fournisseur de contexte enveloppe les enfants et leur fournit la valeur du contexte
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

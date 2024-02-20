@@ -19,7 +19,7 @@ export const darkTheme: ITHEME = {
 	text: "#fff",
 	grey1: "#272727",
 	authBlue: "#3DA6FF",
-	grey2: "#282828",
+	grey2: "#373739",
 	settingsBg: "#282828",
 	youtubeRed: "#FF0000",
 	settingsShadow: "#0E0E0E",

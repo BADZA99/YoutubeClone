@@ -10,4 +10,10 @@ font-size:14px;
     font-size:24px;
   font-family:'Oswald', sans-serif;
 }
+&.auth{
+    color :${({theme})=>theme.authBlue};
+    font-weight:bold;
+}
+
+
 `;

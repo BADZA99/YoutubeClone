@@ -37,5 +37,6 @@ export const LogoSection = styled(Link)`
   align-items: center;
   gap: 0.2rem;
   text-decoration: none;
+  font-weight: 500;
   /* border: 1px solid red; */
 `;
