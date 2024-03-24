@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { MouseEventHandler, useEffect, useState } from 'react'
 import { HeaderMoreSection, LeftSection, LogoSection, SearchBar, SearchSection, StyledHeader } from './Header.styled'
 import { FaMicrophone, FaYoutube } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
@@ -9,14 +9,40 @@ import { Icon } from '../../utils/icon.styled';
 import AuthButton from '../authButton/AuthButton';
 import Settings from '../Settings/Settings';
 import { useAppContext } from '../../context/App.context';
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+
 
 
 
 const Header = () => {
-   const {  text,setSearchBarText } =
-     useAppContext();
-  const [showSettings,setShowSettings]=useState(false);
+     
+  const { text, setSearchBarText } = useAppContext();
+  const [showSettings, setShowSettings] = useState(false);
   const [searchText, setsearchText] = useState("");
+    const {
+      transcript,
+      listening,
+      resetTranscript,
+      browserSupportsSpeechRecognition,
+    } = useSpeechRecognition();
+
+      useEffect(() => {
+        setSearchBarText(transcript);
+        setsearchText(transcript);
+      }, [transcript]);
+
+      if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+      }
+
+      const HandleSearchText = (e : React.ChangeEvent<HTMLInputElement>) => {
+        setsearchText(e.target.value);
+      };
+
+
+   
   return (
     <StyledHeader>
       <LeftSection>
@@ -33,7 +59,7 @@ const Header = () => {
           <input
             value={searchText}
             placeholder={text.search}
-            onChange={(e) => setsearchText(e.target.value)}
+            onChange={HandleSearchText}
           />
 
           <Icon
@@ -48,7 +74,10 @@ const Header = () => {
           data-tooltip-id="voiceSearch"
           data-tooltip-content={text.voiceSearch}
           $showBackground={true}
-          onClick={() => setsearchText(searchText)}
+          className={listening ? "Listening" : ""}
+          onClick={
+            SpeechRecognition.startListening as MouseEventHandler<HTMLDivElement>
+          }
         >
           <FaMicrophone size={21} />
         </Icon>

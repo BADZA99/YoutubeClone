@@ -26,6 +26,11 @@ scrollbar-width:none;
 &::-webkit-scrollbar{
     display:none;
 }
+
+input:focus{
+    outline:none;
+
+}
 `;
 
 
