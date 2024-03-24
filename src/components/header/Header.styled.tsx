@@ -40,3 +40,20 @@ export const LogoSection = styled(Link)`
   font-weight: 500;
   /* border: 1px solid red; */
 `;
+
+export const SearchBar = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 3.5rem;
+  width: 33.5vw;
+  border-radius: 100rem;
+  border: 1px solid ${({ theme: { grey2 } }) => grey2};
+  background-color: ${({ theme: { grey2 } }) => grey2};
+  overflow: hidden;
+
+  input {
+    background-color: ${({ theme: { background } }) => background};
+    color: ${({ theme: { text } }) => text};
+    font-size:inherit;
+    padding-left:1rem;
+  }
+`;

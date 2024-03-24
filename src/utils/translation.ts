@@ -25,6 +25,7 @@ interface ITranslation {
     gaming: string;
     language:string;
     appearance:string;
+    search:string;
 }
 
 const french: ITranslation = {
@@ -54,6 +55,7 @@ const french: ITranslation = {
     gaming: "Jeux",
     language:"Langue",
     appearance:"Apparence",
+    search:"Rechercher",
 };
 
 const english: ITranslation = {
@@ -83,6 +85,7 @@ const english: ITranslation = {
     gaming: "Gaming",
     language:"Language",
     appearance:"Appearance",
+    search:"Search",
 };
 
 export const LANGUAGE={

@@ -1,15 +1,16 @@
 // Importation des hooks et types nécessaires de React
-import { ReactNode, createContext, useContext, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
 import { LANGUAGE } from "../utils/translation";
 
 // Définition de l'interface pour la valeur du contexte de l'application
 interface IAppContextValue {
   theme: "light" | "dark"; // Le thème peut être soit "light" soit "dark"
   language: "french" | "english";
-  ToggleLanguage: ()=>void;
-  ToggleTheme: ()=>void;
-  text: typeof LANGUAGE["english"];
-  
+  ToggleLanguage: () => void;
+  ToggleTheme: () => void;
+  text: (typeof LANGUAGE)["english"];
+  SearchBarText: string;
+  setSearchBarText:Dispatch<SetStateAction<string>>;
 }
 
 // Création du contexte de l'application avec une valeur par défaut de null
@@ -33,6 +34,7 @@ interface IAppContextProviderProps {
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [theme, setTheme] = useState<"light" | "dark">("dark"); 
   const [language, setlanguage] = useState<"french" | "english">("english"); 
+  const [SearchBarText, setSearchBarText] = useState<string>("");
 
   const ToggleLanguage = ()=>{
     setlanguage((CurrentLanguage)=>CurrentLanguage==="english"?"french":"english");
@@ -50,6 +52,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     ToggleLanguage,
     ToggleTheme,
     text:LANGUAGE[language],
+    SearchBarText,
+    setSearchBarText,
   };
   // Le fournisseur de contexte enveloppe les enfants et leur fournit la valeur du contexte
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

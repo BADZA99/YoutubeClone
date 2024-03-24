@@ -17,7 +17,7 @@ interface ITHEME {
 export const darkTheme: ITHEME = {
 	background: "#0F0F0F",
 	text: "#fff",
-	grey1: "#272727",
+	grey1: "#282828",
 	authBlue: "#3DA6FF",
 	grey2: "#373739",
 	settingsBg: "#282828",
