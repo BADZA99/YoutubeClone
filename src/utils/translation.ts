@@ -1,4 +1,4 @@
-interface ITranslation {
+export interface ITranslations {
     signIn: string;
     dark: string;
     light: string;
@@ -28,7 +28,7 @@ interface ITranslation {
     search:string;
 }
 
-const french: ITranslation = {
+const french: ITranslations = {
     signIn: "Se connecter",
     dark: "Sombre",
     light: "Clair",
@@ -58,7 +58,7 @@ const french: ITranslation = {
     search:"Rechercher",
 };
 
-const english: ITranslation = {
+const english: ITranslations = {
     signIn: "Sign in",
     dark: "Dark",
     light: "Light",

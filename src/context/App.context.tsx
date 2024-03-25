@@ -10,7 +10,9 @@ interface IAppContextValue {
   ToggleTheme: () => void;
   text: (typeof LANGUAGE)["english"];
   SearchBarText: string;
-  setSearchBarText:Dispatch<SetStateAction<string>>;
+  setSearchBarText: Dispatch<SetStateAction<string>>;
+  isMenuSmall: boolean;
+  ToggleMenuSize: () => void;
 }
 
 // Création du contexte de l'application avec une valeur par défaut de null
@@ -35,6 +37,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [theme, setTheme] = useState<"light" | "dark">("dark"); 
   const [language, setlanguage] = useState<"french" | "english">("english"); 
   const [SearchBarText, setSearchBarText] = useState<string>("");
+  const [isMenuSmall, setisMenuSmall] = useState(false);
 
   const ToggleLanguage = ()=>{
     setlanguage((CurrentLanguage)=>CurrentLanguage==="english"?"french":"english");
@@ -43,6 +46,10 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const ToggleTheme =()=>{
     setTheme((CurrentTheme)=>CurrentTheme==="light"?"dark":"light");
   }
+
+  const ToggleMenuSize=()=>{setisMenuSmall((state) => !state);}
+
+
 
 
 
@@ -54,6 +61,9 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     text:LANGUAGE[language],
     SearchBarText,
     setSearchBarText,
+    isMenuSmall,
+    setisMenuSmall,
+    ToggleMenuSize
   };
   // Le fournisseur de contexte enveloppe les enfants et leur fournit la valeur du contexte
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

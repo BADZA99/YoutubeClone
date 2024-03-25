@@ -18,13 +18,13 @@ import SpeechRecognition, {
 
 const Header = () => {
      
-  const { text, setSearchBarText } = useAppContext();
+  const { text, setSearchBarText, ToggleMenuSize } = useAppContext();
   const [showSettings, setShowSettings] = useState(false);
   const [searchText, setsearchText] = useState("");
     const {
       transcript,
       listening,
-      resetTranscript,
+      // resetTranscript,
       browserSupportsSpeechRecognition,
     } = useSpeechRecognition();
 
@@ -46,7 +46,11 @@ const Header = () => {
   return (
     <StyledHeader>
       <LeftSection>
-        <Icon className="menu">
+        <Icon className="menu"
+        onClick={
+          ()=> ToggleMenuSize()
+        }
+        >
           <SlMenu size={17} />
         </Icon>
         <LogoSection to="/">
