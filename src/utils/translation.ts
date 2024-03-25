@@ -26,6 +26,18 @@ export interface ITranslations {
     language:string;
     appearance:string;
     search:string;
+    moviesTv: string;
+       // rajoute news,sport,learning,fashionBeauty,podcasts,browseChannels,settings,help et settings
+    news:string;
+    sport:string;
+    learning:string;
+    fashionBeauty:string;
+    podcasts:string;
+    browseChannels:string;
+    settings:string;
+    help:string;
+    sendFeedback:string;
+    signInMenuText:string;
 }
 
 const french: ITranslations = {
@@ -56,6 +68,19 @@ const french: ITranslations = {
     language:"Langue",
     appearance:"Apparence",
     search:"Rechercher",
+    moviesTv: "Films et TV",
+    // rajoute news,sport,learning,fashionBeauty,podcasts,browseChannels,settings,help et settings
+    news:"Actualités",
+    sport:"Sport",
+    learning:"Apprentissage",
+    fashionBeauty:"Mode et beauté",
+    podcasts:"Podcasts",
+    browseChannels:"Parcourir les chaînes",
+    settings:"Paramètres",
+    help:"Aide",
+    sendFeedback:"Envoyer des commentaires",
+    signInMenuText:"Se connecter pour liker et s'abonner",
+    
 };
 
 const english: ITranslations = {
@@ -86,6 +111,22 @@ const english: ITranslations = {
     language:"Language",
     appearance:"Appearance",
     search:"Search",
+    moviesTv: "Movies & TV",
+    // rajoute news,sport,learning,fashionBeauty,podcasts,browseChannels,settings,help et settings
+    news:"News",
+    sport:"Sport",
+    learning:"Learning",
+    fashionBeauty:"Fashion & Beauty",
+    podcasts:"Podcasts",
+    browseChannels:"Browse channels",
+    settings:"Settings",
+    help:"Help",
+    sendFeedback:"Send feedback",
+    signInMenuText:"Sign in to like videos, comment, and subscribe.",
+
+
+
+
 };
 
 export const LANGUAGE={
