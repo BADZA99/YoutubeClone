@@ -59,6 +59,4 @@ export default function Menu() {
       </StyledMenu>
     );
   }
-
-  return <StyledMenu>menu</StyledMenu>;
 }

@@ -27,7 +27,6 @@ export interface ITranslations {
     appearance:string;
     search:string;
     moviesTv: string;
-       // rajoute news,sport,learning,fashionBeauty,podcasts,browseChannels,settings,help et settings
     news:string;
     sport:string;
     learning:string;
@@ -38,6 +37,21 @@ export interface ITranslations {
     help:string;
     sendFeedback:string;
     signInMenuText:string;
+//    rajouter all,sports,boxing,gym,fashion,flowers,soccer,tennis,bascketBall,housing,gaming,finance,stocks,technology,apple,tesla
+all:string;
+sports:string;
+boxing:string;
+gym:string;
+fashion:string;
+flowers:string;
+tennis:string;
+basketBall:string;
+housing:string;
+finance:string;
+apple:string;
+tesla:string;
+soccer:string;
+
 }
 
 const french: ITranslations = {
@@ -80,6 +94,20 @@ const french: ITranslations = {
     help:"Aide",
     sendFeedback:"Envoyer des commentaires",
     signInMenuText:"Se connecter pour liker et s'abonner",
+    all:"tout",
+    sports:"sports",
+    boxing:"boxe",
+    gym:"salle de sport",
+    fashion:"mode",
+    flowers:"fleurs",
+    tennis:"tennis",
+    basketBall:"basketBall",
+    housing:"logement",
+    finance:"finance",
+    apple:"apple",
+    tesla:"tesla",
+    soccer:"football",
+
     
 };
 
@@ -112,7 +140,6 @@ const english: ITranslations = {
     appearance:"Appearance",
     search:"Search",
     moviesTv: "Movies & TV",
-    // rajoute news,sport,learning,fashionBeauty,podcasts,browseChannels,settings,help et settings
     news:"News",
     sport:"Sport",
     learning:"Learning",
@@ -123,6 +150,20 @@ const english: ITranslations = {
     help:"Help",
     sendFeedback:"Send feedback",
     signInMenuText:"Sign in to like videos, comment, and subscribe.",
+    all:"all",
+    sports:"sports",
+    boxing:"boxing",
+    gym:"gym",
+    fashion:"fashion",
+    flowers:"flowers",
+    tennis:"tennis",
+    basketBall:"basketBall",
+    housing:"housing",
+    finance:"finance",
+    apple:"apple",
+    tesla:"tesla",
+    soccer:"soccer",
+    
 
 
 
