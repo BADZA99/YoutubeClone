@@ -1,7 +1,8 @@
 // Importation des hooks et types nécessaires de React
-import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
 import { LANGUAGE } from "../utils/translation";
-
+import { createClient } from "pexels";
+import { PEXELS_API_KEY } from "../utils/pexels";
 // Définition de l'interface pour la valeur du contexte de l'application
 interface IAppContextValue {
   theme: "light" | "dark"; // Le thème peut être soit "light" soit "dark"
@@ -34,6 +35,7 @@ export const useAppContext = () => {
 interface IAppContextProviderProps {
   children: ReactNode; // Les enfants qui seront enveloppés par le fournisseur de contexte
 }
+const client = createClient(PEXELS_API_KEY)
 
 // Composant fournisseur de contexte de l'application
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
@@ -44,6 +46,24 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [activeMenuText, setactiveMenuText]=useState("home");
   const [activeCategory, setActiveCategory]=useState("all");
 
+  useEffect(() => {
+    fetchVideos(activeCategory);
+  }, [activeCategory]);
+  
+  useEffect(() => {
+    fetchVideos(SearchBarText);
+  }, [ SearchBarText]);
+
+  const fetchVideos = async (query:string)=>{
+    try{
+      const response = await client.videos.search({query:query, per_page:44});
+      console.log(response);
+    }catch (error){
+      console.log(error);
+
+    }
+
+  }
   const ToggleLanguage = ()=>{
     setlanguage((CurrentLanguage)=>CurrentLanguage==="english"?"french":"english");
   }

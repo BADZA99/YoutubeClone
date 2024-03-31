@@ -51,6 +51,8 @@ finance:string;
 apple:string;
 tesla:string;
 soccer:string;
+stocks:string;
+technology:string;
 
 }
 
@@ -107,6 +109,8 @@ const french: ITranslations = {
     apple:"apple",
     tesla:"tesla",
     soccer:"football",
+    stocks:"actions",
+    technology:"technologie",
 
     
 };
@@ -163,6 +167,8 @@ const english: ITranslations = {
     apple:"apple",
     tesla:"tesla",
     soccer:"soccer",
+    stocks:"stocks",
+    technology:"technology",
     
 
 

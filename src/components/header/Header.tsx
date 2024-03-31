@@ -18,7 +18,8 @@ import SpeechRecognition, {
 
 const Header = () => {
      
-  const { text, setSearchBarText, ToggleMenuSize } = useAppContext();
+  const { text, setSearchBarText, ToggleMenuSize } =
+    useAppContext();
   const [showSettings, setShowSettings] = useState(false);
   const [searchText, setsearchText] = useState("");
     const {
@@ -32,6 +33,10 @@ const Header = () => {
         setSearchBarText(transcript);
         setsearchText(transcript);
       }, [transcript]);
+      // useEffect(() => {
+      //   setSearchBarText(searchText);
+      //   setsearchText(searchText);
+      // }, [searchText]);
 
       if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
