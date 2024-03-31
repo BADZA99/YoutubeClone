@@ -33,6 +33,7 @@ const Header = () => {
         setSearchBarText(transcript);
         setsearchText(transcript);
       }, [transcript]);
+      
       // useEffect(() => {
       //   setSearchBarText(searchText);
       //   setsearchText(searchText);

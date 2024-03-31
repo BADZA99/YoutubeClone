@@ -41,5 +41,5 @@ p{
 export const CategoryCarusel =styled.div`
 width: 100%;
 overflow-x:scroll;
-margin-bottom:-20px;
+margin-bottom:-40px;
 `;

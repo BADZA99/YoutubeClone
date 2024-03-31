@@ -1,7 +1,7 @@
 // Importation des hooks et types nécessaires de React
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
 import { LANGUAGE } from "../utils/translation";
-import { createClient } from "pexels";
+import {Video,Videos, createClient } from "pexels";
 import { PEXELS_API_KEY } from "../utils/pexels";
 // Définition de l'interface pour la valeur du contexte de l'application
 interface IAppContextValue {
@@ -17,6 +17,8 @@ interface IAppContextValue {
   activeMenuText: string;
   activeCategory: string;
   setActiveCategory: Dispatch<SetStateAction<string>>;
+  videos:Video[];
+  isFetchingVideos:boolean;
 }
 
 // Création du contexte de l'application avec une valeur par défaut de null
@@ -45,6 +47,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [isMenuSmall, setisMenuSmall] = useState(false);
   const [activeMenuText, setactiveMenuText]=useState("home");
   const [activeCategory, setActiveCategory]=useState("all");
+  const [videos, setVideos]=useState<Video[]>([]);
+  const [isFetchingVideos, setIsFetchingVideos]=useState(false);
 
   useEffect(() => {
     fetchVideos(activeCategory);
@@ -55,13 +59,16 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   }, [ SearchBarText]);
 
   const fetchVideos = async (query:string)=>{
+    setIsFetchingVideos(true);
     try{
       const response = await client.videos.search({query:query, per_page:44});
       console.log(response);
+      setVideos((response as Videos).videos);
     }catch (error){
       console.log(error);
 
     }
+    setIsFetchingVideos(false);
 
   }
   const ToggleLanguage = ()=>{
@@ -93,6 +100,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     setactiveMenuText,
     activeCategory,
     setActiveCategory,
+    videos,
+    isFetchingVideos
   };
   // Le fournisseur de contexte enveloppe les enfants et leur fournit la valeur du contexte
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
