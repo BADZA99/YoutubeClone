@@ -32,7 +32,7 @@ const Header = () => {
       useEffect(() => {
         setSearchBarText(transcript);
         setsearchText(transcript);
-      }, [transcript]);
+      }, [transcript, setSearchBarText]);
       
       // useEffect(() => {
       //   setSearchBarText(searchText);
