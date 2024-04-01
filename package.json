@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/react-speech-recognition": "^3.9.5"
   }
 }

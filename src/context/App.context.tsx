@@ -20,8 +20,10 @@ interface IAppContextValue {
   setActiveCategory: Dispatch<SetStateAction<string>>;
   videos: Video[];
   isFetchingVideos: boolean;
-  videoToWatch: number ;
+  videoToWatch: number;
   setvideoToWatch: Dispatch<SetStateAction<number>>;
+  videoToWatchData: Video | undefined;
+  fetchVideo: (id: string) => Promise<void>;
 }
 
 // Création du contexte de l'application avec une valeur par défaut de null
@@ -53,6 +55,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [videos, setVideos]=useState<Video[]>([]);
   const [isFetchingVideos, setIsFetchingVideos]=useState(false);
   const [videoToWatch, setvideoToWatch]=useState<number>(0);
+  const [videoToWatchData, setvideoToWatchData]=useState<Video>();
 let navigate=useNavigate();
   useEffect(() => {
     activeCategory && fetchVideos(activeCategory);
@@ -73,6 +76,21 @@ let navigate=useNavigate();
       const response = await client.videos.search({query:query, per_page:44});
       console.log(response);
       setVideos((response as Videos).videos);
+    }catch (error){
+      console.log(error);
+
+    }
+    setIsFetchingVideos(false);
+
+  }
+  const fetchVideo = async (id:string)=>{
+    setIsFetchingVideos(true);
+    try{
+      const response = await client.videos.show({
+        id
+      });
+      console.log(response);
+      setvideoToWatchData((response as Video));
     }catch (error){
       console.log(error);
 
@@ -114,7 +132,9 @@ let navigate=useNavigate();
     videos,
     isFetchingVideos,
     videoToWatch,
-    setvideoToWatch
+    setvideoToWatch,
+    videoToWatchData,
+    fetchVideo
   };
   // Le fournisseur de contexte enveloppe les enfants et leur fournit la valeur du contexte
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
