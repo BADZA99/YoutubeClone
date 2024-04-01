@@ -39,7 +39,7 @@ export default function WatchVideoContent() {
     if (id) {
       fetchVideo(id);
     }
-  }, [id]);
+  }, [id, fetchVideo]);
 
   if (isFetchingVideos) {
     return <LoadingBackDrop />;
