@@ -51,11 +51,11 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [isFetchingVideos, setIsFetchingVideos]=useState(false);
 
   useEffect(() => {
-    fetchVideos(activeCategory);
+    activeCategory && fetchVideos(activeCategory);
   }, [activeCategory]);
   
   useEffect(() => {
-    fetchVideos(SearchBarText);
+    SearchBarText && fetchVideos(SearchBarText);
   }, [ SearchBarText]);
 
   const fetchVideos = async (query:string)=>{

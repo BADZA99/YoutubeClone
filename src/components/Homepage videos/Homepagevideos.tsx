@@ -6,9 +6,9 @@ import RegularVideoItem from '../RegularVideoItem/RegularVideoItem';
 
 export default function Homepagevideos() {
         const {videos}=useAppContext();
-        const FIRST_VIDEO_SECTION=videos.splice(0,8);
-        const SECOND_VIDEO_SECTION=videos.splice(8,20);
-        const THIRD_VIDEO_SECTION=videos.splice(20,20);
+        const FIRST_VIDEO_SECTION=videos.slice(0,8);
+        const SECOND_VIDEO_SECTION=videos.slice(8,20);
+        const THIRD_VIDEO_SECTION=videos.slice(20,20);
     return (
         <StyledHomepagevideos>
             <RegularVidThumnailContainer>
