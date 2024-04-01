@@ -62,3 +62,14 @@ background-color:${({theme: {grey2}})=>grey2};
 }
 
 `;
+export const ShortsVideosContainer =styled.div`
+
+width: 100%;
+display: grid;
+grid-template-columns: repeat(6,1fr);
+column-gap: 1rem;
+row-gap: 1rem;
+margin-top:1.5rem;
+
+
+`;
