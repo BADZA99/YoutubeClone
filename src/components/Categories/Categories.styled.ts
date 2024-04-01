@@ -14,6 +14,7 @@ position: relative;
 padding-bottom: .6rem;
 z-index: 100;
 padding-right:10rem;
+overflow-x:scroll;
 
 `;
 
