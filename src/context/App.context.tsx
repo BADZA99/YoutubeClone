@@ -3,6 +3,7 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffe
 import { LANGUAGE } from "../utils/translation";
 import {Video,Videos, createClient } from "pexels";
 import { PEXELS_API_KEY } from "../utils/pexels";
+import { useNavigate } from "react-router-dom";
 // Définition de l'interface pour la valeur du contexte de l'application
 interface IAppContextValue {
   theme: "light" | "dark"; // Le thème peut être soit "light" soit "dark"
@@ -17,8 +18,10 @@ interface IAppContextValue {
   activeMenuText: string;
   activeCategory: string;
   setActiveCategory: Dispatch<SetStateAction<string>>;
-  videos:Video[];
-  isFetchingVideos:boolean;
+  videos: Video[];
+  isFetchingVideos: boolean;
+  videoToWatch: number ;
+  setvideoToWatch: Dispatch<SetStateAction<number>>;
 }
 
 // Création du contexte de l'application avec une valeur par défaut de null
@@ -49,10 +52,16 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [activeCategory, setActiveCategory]=useState("all");
   const [videos, setVideos]=useState<Video[]>([]);
   const [isFetchingVideos, setIsFetchingVideos]=useState(false);
-
+  const [videoToWatch, setvideoToWatch]=useState<number>(0);
+let navigate=useNavigate();
   useEffect(() => {
     activeCategory && fetchVideos(activeCategory);
   }, [activeCategory]);
+  useEffect(() => {
+    if (videoToWatch !== 0) {
+      navigate(`/${videoToWatch}`);
+    }
+  }, [videoToWatch]);
   
   useEffect(() => {
     SearchBarText && fetchVideos(SearchBarText);
@@ -85,6 +94,8 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
 
 
 
+
+
   const value = {
     theme,
     language,
@@ -101,7 +112,9 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     activeCategory,
     setActiveCategory,
     videos,
-    isFetchingVideos
+    isFetchingVideos,
+    videoToWatch,
+    setvideoToWatch
   };
   // Le fournisseur de contexte enveloppe les enfants et leur fournit la valeur du contexte
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

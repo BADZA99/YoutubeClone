@@ -6,6 +6,8 @@ import { useAppContext } from './context/App.context';
 import Header from './components/header/Header';
 import ToolTips from './utils/ToolTips';
 import Body from './components/Body/Body';
+import { Route, Routes } from 'react-router-dom';
+import WatchVideoContent from './components/watchVideoContent/WatchVideoContent';
 
 
 function App() {
@@ -13,11 +15,15 @@ function App() {
   return (
     <ThemeProvider theme={THEMES[theme]}>
       <GlobalStyle />
-      <ToolTips/>
+      <ToolTips />
       <AppContainer>
-        <Header/>
-        <Body/>
-        </AppContainer>
+        <Header />
+        <Routes>
+        <Route path="/" element={<Body />} />
+        <Route path="/:id" element={<WatchVideoContent />} />
+
+        </Routes>
+      </AppContainer>
     </ThemeProvider>
   );
 }
