@@ -12,6 +12,7 @@ import { useAppContext } from '../../context/App.context';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -22,6 +23,8 @@ const Header = () => {
     useAppContext();
   const [showSettings, setShowSettings] = useState(false);
   const [searchText, setsearchText] = useState("");
+   const { pathname } = useLocation();
+
     const {
       transcript,
       listening,
@@ -38,7 +41,10 @@ const Header = () => {
       //   setSearchBarText(searchText);
       //   setsearchText(searchText);
       // }, [searchText]);
-
+const isHomePath= pathname === "/";
+if(isHomePath){
+  document.title="Youtube";
+}
       if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
       }
@@ -47,15 +53,13 @@ const Header = () => {
         setsearchText(e.target.value);
       };
 
-
    
   return (
     <StyledHeader>
       <LeftSection>
-        <Icon className="menu"
-        onClick={
-          ()=> ToggleMenuSize()
-        }
+        <Icon
+          className={`${!isHomePath && "disabled"} menu`}
+          onClick={() => ToggleMenuSize()}
         >
           <SlMenu size={17} />
         </Icon>
@@ -75,7 +79,7 @@ const Header = () => {
           <Icon
             data-tooltip-id="search"
             data-tooltip-content={text.search}
-            onClick={() => setsearchText(searchText)}
+            onClick={() => setSearchBarText(searchText)}
           >
             <LuSearch size={19} />
           </Icon>

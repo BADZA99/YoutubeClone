@@ -1,6 +1,6 @@
 // Importation des hooks et types nécessaires de React
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
-import { LANGUAGE } from "../utils/translation";
+import { ITranslations, LANGUAGE } from "../utils/translation";
 import {Video,Videos, createClient } from "pexels";
 import { PEXELS_API_KEY } from "../utils/pexels";
 import { useNavigate } from "react-router-dom";
@@ -125,7 +125,7 @@ let navigate=useNavigate();
     isMenuSmall,
     setisMenuSmall,
     ToggleMenuSize,
-    activeMenuText,
+    activeMenuText: LANGUAGE[language][activeMenuText as keyof ITranslations],
     setactiveMenuText,
     activeCategory,
     setActiveCategory,

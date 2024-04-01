@@ -33,6 +33,13 @@ cursor:pointer;
     color: ${({theme})=>theme.white};
 }
 
+&.disabled{
+    &:hover{
+        cursor: not-allowed;
+    }
+
+}
+
 
 `;
 
