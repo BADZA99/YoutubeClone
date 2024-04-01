@@ -53,6 +53,8 @@ tesla:string;
 soccer:string;
 stocks:string;
 technology:string;
+showLess:string;
+showMore:string;
 
 }
 
@@ -111,6 +113,8 @@ const french: ITranslations = {
     soccer:"football",
     stocks:"actions",
     technology:"technologie",
+    showMore:"montrer plus",
+    showLess:"montrer moins"
 
     
 };
@@ -169,6 +173,8 @@ const english: ITranslations = {
     soccer:"soccer",
     stocks:"stocks",
     technology:"technology",
+    showMore:"show more",
+    showLess:"show less"
     
 
 

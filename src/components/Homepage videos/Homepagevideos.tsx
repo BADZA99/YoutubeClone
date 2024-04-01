@@ -3,6 +3,8 @@ import { StyledHomepagevideos } from './Homepagevideos.styled'
 import { useAppContext } from '../../context/App.context'
 import { RegularVidThumnailContainer } from './Homepagevideos.styled'
 import RegularVideoItem from '../RegularVideoItem/RegularVideoItem';
+import VideoShort from '../videoShorts/VideoShort';
+
 
 export default function Homepagevideos() {
         const {videos}=useAppContext();
@@ -18,6 +20,9 @@ export default function Homepagevideos() {
                     )
                 }
             </RegularVidThumnailContainer>
+            <VideoShort 
+            videos={SECOND_VIDEO_SECTION}
+            />
 
             
         </StyledHomepagevideos>
