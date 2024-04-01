@@ -38,29 +38,23 @@ const RegularVideoItem = ({video}:IRegularVideoItemProps) => {
           <img src={video.image} alt="thumnail" />
         )}
         <Time>
-            <Text>
-                
-                  {  Math.floor(video.duration/60) } :  
-                  { Math.floor(video.duration % 60)}
-            </Text>
+          <Text>
+            {Math.floor(video.duration / 60)} :{Math.floor(video.duration % 60)}
+          </Text>
         </Time>
       </RegularVideoThumbnail>
       <RegularVideoContent>
         <RegularVideoPic>
-            <img src={video.image} alt="profil pic" />
+          <img src={video.image} alt="profil pic" />
         </RegularVideoPic>
         <RegularVideoTitleSubTitle>
-            <Text className='videoItemTitle'>
-                {
-                    getTitle(video.url).slice(0,TITLE_LENGTH)
-                }
-                {
-                    getTitle(video.url).length>TITLE_LENGTH && "..."
-                
-                }
-            </Text>
+          <Text className="videoItemTitle">
+            {getTitle(video.url).slice(0, TITLE_LENGTH)}
+            {getTitle(video.url).length > TITLE_LENGTH && "..."}
+          </Text>
+          <Text className="name">{video.user.name}</Text>
+          <Text className="details">{video.duration}M views <span className='dot'>&#9679;</span> 2 hours ago</Text>
         </RegularVideoTitleSubTitle>
-
       </RegularVideoContent>
     </StyledRegularVideoItem>
   );

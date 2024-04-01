@@ -76,6 +76,26 @@ margin-top:.3rem;
 .videoItemTitle{
     font-size:16px;
     font-weight: 500;
+    color: ${({theme: {text}}) =>text};
+
+}
+.name{
+    font-size:14px;
+    color: ${({theme: {grey3}}) =>grey3};
+    margin:.5rem 0 0.2rem 0;
+}
+.details{
+    font-size:14px;
+    display: flex;
+    gap: .5rem;
+    color: ${({theme: {grey3}}) =>grey3};
+
+    /* margin:.5rem 0 0.2rem 0; */
+}
+
+.dot{
+    font-size: 8px;
+   
 }
 `;
 
