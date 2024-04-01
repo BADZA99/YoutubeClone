@@ -8,11 +8,13 @@ display: flex;
 flex-direction: column;
 gap: 0.7rem;
 /* background-color:red; */
-
-
-
 &:hover{
     cursor: pointer;
+}
+
+&.smallView{
+    flex-direction: row;
+    height: auto;
 }
 `;
 
@@ -48,6 +50,11 @@ img{
 ${({$isMenuSmall}) => $isMenuSmall && css`
      height: 13.7rem;
 `}
+
+&.smallView{
+   height:6rem;
+    width: 9rem;
+}
 `;
 
 export const RegularVideoContent =styled.div`
@@ -56,6 +63,9 @@ display: grid;
 grid-template-columns: 2.3rem 1fr ;
 gap: 0.7rem;
 
+&.smallView{
+  display: flex;
+}
 `;
 export const RegularVideoPic =styled.div`
 width: 2.3rem;
@@ -69,6 +79,10 @@ img{
     height:100%;
     border-radius:inherit;
     object-fit:cover;
+}
+
+&.smallView{
+  display: none !important;
 }
 `;
 export const RegularVideoTitleSubTitle =styled.div`
@@ -96,6 +110,19 @@ margin-top:.3rem;
 .dot{
     font-size: 8px;
    
+}
+
+&.smallView{
+.videoItemTitle{
+    font-size:14px;
+}
+
+.name{
+    font-size:17px;
+}
+.details{
+    font-size:12px;
+}
 }
 `;
 

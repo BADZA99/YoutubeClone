@@ -11,7 +11,7 @@ export default function WatchVideoContent() {
         <h1>left side</h1>
         <MoreVideoContainer>
             <Categories/>
-            {videos.map((video,index)=><RegularVideoItem video={video} key={index}/>) }
+            {videos.map((video,index)=><RegularVideoItem smallView video={video} key={index}/>) }
         </MoreVideoContainer>
       
     </StyledWatchVideoContent>
