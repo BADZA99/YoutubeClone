@@ -55,6 +55,10 @@ stocks:string;
 technology:string;
 showLess:string;
 showMore:string;
+subscribers:string;
+Subscribe:string;
+save:string,
+share:string;
 
 }
 
@@ -114,7 +118,11 @@ const french: ITranslations = {
     stocks:"actions",
     technology:"technologie",
     showMore:"montrer plus",
-    showLess:"montrer moins"
+    showLess:"montrer moins",
+    subscribers:"abonnés",
+    Subscribe:"S'abonner",
+    save:"enregistrer",
+    share:"partager"
 
     
 };
@@ -174,7 +182,11 @@ const english: ITranslations = {
     stocks:"stocks",
     technology:"technology",
     showMore:"show more",
-    showLess:"show less"
+    showLess:"show less",
+    subscribers:"subscribers",
+    Subscribe:"Subscribe",
+    save:"save",
+    share:"share"
     
 
 
