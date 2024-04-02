@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 export const StyledCategories =styled.div`
 width:85%;
-height: 100%;
+height: 90%;
 display: flex;
 align-items: flex-end;
 gap: 0.3rem;
@@ -42,5 +42,8 @@ p{
 export const CategoryCarusel =styled.div`
 width: 100%;
 overflow-x:scroll;
-margin-bottom:-30px;
+margin-bottom:-35px;
+display: flex;
+align-items: flex-end;
+background-color: red;
 `;

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 
 export const StyledContent = styled.div`
-    width: 100vw;
+    width: 100%;
     height: 94.2%;
     display: grid;
     grid-template-columns: 1fr;
