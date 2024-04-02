@@ -39,7 +39,8 @@ export default function WatchVideoContent() {
     if (id) {
       fetchVideo(id);
     }
-  }, [id, fetchVideo]);
+    // eslint-disable-next-line
+  }, [id]);
 
   if (isFetchingVideos) {
     return <LoadingBackDrop />;

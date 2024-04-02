@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 interface IAppState{
     theme: "light" | "dark"
 }

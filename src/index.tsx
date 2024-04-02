@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import { AppContextProvider } from './context/App.context';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 
 const root = ReactDOM.createRoot(
@@ -12,9 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <AppContextProvider>
-      <App />
-    </AppContextProvider>
+    <Provider store={store}>
+      <AppContextProvider>
+        <App />
+      </AppContextProvider>
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

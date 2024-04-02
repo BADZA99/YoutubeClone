@@ -4,6 +4,9 @@ import { ITranslations, LANGUAGE } from "../utils/translation";
 import {Video,Videos, createClient } from "pexels";
 import { PEXELS_API_KEY } from "../utils/pexels";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../store/store";
+// import { useDispatch } from "react-redux";
+import { changeTheme } from "../store/app.slice";
 // Définition de l'interface pour la valeur du contexte de l'application
 interface IAppContextValue {
   theme: "light" | "dark"; // Le thème peut être soit "light" soit "dark"
@@ -46,7 +49,7 @@ const client = createClient(PEXELS_API_KEY)
 
 // Composant fournisseur de contexte de l'application
 export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  // const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [language, setlanguage] = useState<"french" | "english">("english");
   const [SearchBarText, setSearchBarText] = useState<string>("");
   const [isMenuSmall, setisMenuSmall] = useState(false);
@@ -56,10 +59,12 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [isFetchingVideos, setIsFetchingVideos] = useState(false);
   const [videoToWatch, setvideoToWatch] = useState<number>(0);
   const [videoToWatchData, setvideoToWatchData] = useState<Video>();
+  const dispatch = useAppDispatch()
   let navigate = useNavigate();
   useEffect(() => {
     activeCategory && fetchVideos(activeCategory);
   }, [activeCategory]);
+
   useEffect(() => {
     if (videoToWatch !== 0) {
       navigate(`/${videoToWatch}`);
@@ -105,7 +110,9 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   };
 
   const ToggleTheme = () => {
-    setTheme((CurrentTheme) => (CurrentTheme === "light" ? "dark" : "light"));
+    // setTheme((CurrentTheme) => (CurrentTheme === "light" ? "dark" : "light"));
+    dispatch(changeTheme());
+
   };
 
   const ToggleMenuSize = () => {
@@ -113,7 +120,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   };
 
   const value = {
-    theme,
+    theme : useAppSelector(state => state.app.theme),
     language,
     ToggleLanguage,
     ToggleTheme,
