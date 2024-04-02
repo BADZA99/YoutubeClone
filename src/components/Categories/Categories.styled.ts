@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 
 export const StyledCategories =styled.div`
-width:85%;
+width:95%;
 height: 90%;
 display: flex;
 align-items: flex-end;
