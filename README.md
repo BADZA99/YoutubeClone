@@ -1,4 +1,4 @@
-# Project Title
+# YOUUTUUBE
 
 This is a simple Youtube clone built with React, Redux, and TypeScript.
 
