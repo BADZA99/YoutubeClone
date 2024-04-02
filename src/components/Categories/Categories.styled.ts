@@ -9,7 +9,7 @@ width:85%;
 height: 100%;
 display: flex;
 align-items: flex-end;
-gap: 0.5rem;
+gap: 0.3rem;
 position: relative;
 padding-bottom: .6rem;
 z-index: 100;
