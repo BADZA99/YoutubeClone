@@ -45,5 +45,5 @@ overflow-x:scroll;
 margin-bottom:-35px;
 display: flex;
 align-items: flex-end;
-background-color: red;
+/* background-color: red; */
 `;
